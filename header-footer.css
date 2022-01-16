@@ -1,0 +1,377 @@
+/******************************
+HEADER-FOOTER.CSS
+@url - 
+@author - Chama Makungu
+@updated - 16th Jan 2022
+__________________________________________
+This script controls the header, navigation and footer of the website and should be loaded after app.css in order to use core variables
+*******************************/
+/******************************
+    HEADROOM **/
+.headroom{
+	will-change:auto;
+	transition:transform .25s ease-in-out;
+	-webkit-transition:transform .25s ease-in-out;-moz-transition:transform .25s ease-in-out;
+	-o-transition:transform .25s ease-in-out;
+}
+.headroom--pinned{
+	transform:translateY(0%);
+	-webkit-transform:translateY(0%);
+	-moz-transform:translateY(0%);
+	-o-transform:translateY(0%);
+}
+.headroom--unpinned{
+	transform:translateY(-100%);
+	-webkit-transform:translateY(-100%);
+	-moz-transform:translateY(-100%);
+	-o-transform:translateY(-100%);
+}
+/******************************
+    NAVIGATION ANIMATIONS**/
+@keyframes navLinkFade{
+	from{
+		opacity:0;
+		transform:translateX(50px);
+	}
+	to{
+		opacity:1;
+		transform:translateX(0);
+	}
+}
+.navbar,
+.navbar-scrolled,
+.navbar-nav {
+	transition: background 1s ease, color 1s ease,transform .25s ease-in-out,opacity .25s ease-in-out,width .25s ease-in-out,height .25s ease-in-out;
+}
+.navbar-brand,
+.navbar-brand img,
+.navbar-brand svg,
+.navbar-text,
+.nav-item,
+.navbar-toggler .line,
+.footer-socials a{
+    transition: transform .25s ease-in-out,opacity .25s ease-in-out,width .25s ease-in-out,height .25s ease-in-out;
+    -webkit-transition: transform .25s ease-in-out,opacity .25s ease-in-out,width .25s ease-in-out,height .25s ease-in-out;
+}
+.offcanvas-collapse {
+	transition: transform .25s ease-in-out,width .25s ease-in-out,height 1.25s ease-in-out,visibility .25s ease-in-out,opacity .25s ease-in-out;
+}
+
+/******************************
+    HEADER/NAVBAR **/
+.header {
+	transition: background 1s ease, color 1s ease;
+	z-index: 1050;
+}
+/** SMALL **/
+.navbar-brand,
+.navbar-text {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.navbar-brand img,
+.navbar-brand svg {
+	height: 35px;
+	/* width: 35px; */
+}
+/* opacity 0 for navLinkFade animation */
+.navbar .nav-item {
+	opacity: 0;
+	background: var(--clr-overlay-3);
+	width: 100%;
+	margin-bottom: 0.3rem;
+	text-align: center;
+}
+.navbar,
+.navbar-nav {
+	background-color: var(--background);
+}
+.navbar-brand,
+.nav-link {
+	color: var(--foreground);
+}
+.nav-link:hover {
+	color: #9c27b0;
+}
+.nav-item.btn .nav-link:hover {
+	color: #fff;
+}
+.nav-item.active .nav-link {
+	color: #9c27b0;
+}
+/** DROPDOWN MENU DARK/LIGHT **/
+.dropdown-menu-dark {
+	color: var(--foreground);
+  	background-color: var(--background);
+	border-color: var(--clr-overlay-3);
+}
+.dropdown-menu-dark .dropdown-item {
+  	color: var(--foreground);
+}
+.dropdown-menu-dark .dropdown-item:hover, .dropdown-menu-dark .dropdown-item:focus {
+	color: var(--clr-accent-5);
+  	background-color: var(--clr-overlay-3);
+}
+.dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
+	color: #fff;
+  	background-color: #9c27b0;
+}
+.theme-toggle:hover {
+	cursor: pointer;
+}
+/** MEDIUM **/
+@media (min-width: 576px) {
+	.navbar-brand img,
+	.navbar-brand svg {
+		height: 40px;
+		/* width: 40px; */
+	}
+}
+@media (min-width: 768px) {
+	
+	.navbar-brand img,
+	.navbar-brand svg {
+		/* width: 45px; */
+		height: 45px;
+	}
+}
+/****************************
+  	OFF-CANVAS **/
+@media (max-width: 991.98px) {
+	.offcanvas-collapse {
+		position: fixed;
+		top: 46px; /* Height of navbar */
+		left: 0;
+		width: 0;
+		min-height: 100vh;
+		padding: 0.5rem 0.5rem;
+		background-color: var(--background);
+		opacity: 0.5;
+		visibility: hidden;
+		transform-origin: left;
+		z-index: 999;
+	}
+	.offcanvas-collapse.open {
+		visibility: visible;
+		opacity: 1;
+		width: 100%;
+
+		background-image: url("../img/logo.svg");
+		background-repeat: no-repeat;
+		background-size: 6rem;
+		background-position: center;
+		transition: opacity .25s ease, visibility .25s ease;
+	}
+}
+
+/** X-LARGE **/
+@media (min-width: 992px) {
+	.navbar {
+		height: 55px;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.navbar,
+	.navbar-nav {
+		background-color: var(--background);
+	}
+	/* opacity 1 for navLinkFade animation */
+	.navbar .nav-item {
+		opacity: 1;
+		background-color: transparent;
+		margin-bottom: 0;
+		text-align: left;
+	}
+	.navbar-brand,
+	.nav-link {
+		color: var(--foreground);
+	}
+	.navbar-brand img,
+	.navbar-brand svg {
+		/* width: 55px; */
+		height: 55px;
+	}
+	.navbar-scrolled {
+		height: 45px;
+		background-color: var(--background);
+		box-shadow: var(--shadow-1);
+	}
+	.navbar-scrolled .navbar-nav {
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.navbar-scrolled .navbar-brand img,
+	.navbar-scrolled .navbar-brand svg {
+		/* width: 45px; */
+		height: 45px;
+	}
+	
+}
+/** XXLARGE **/
+@media (min-width: 1200px) {
+	.navbar {
+		height: 80px;
+	}
+	.navbar-scrolled {
+		height: 55px;
+	}
+	.navbar-brand img,
+	.navbar-brand svg {
+		/* width: 80px; */
+		height: 80px;
+	}
+	.navbar-scrolled .navbar-brand img,
+	.navbar-scrolled .navbar-brand svg {
+		/* width: 55px; */
+		height: 55px;
+	}
+}
+/******************************
+    BURGER MENU BUTTON **/
+/** BURGER SMALL **/
+.navbar-toggler .line {
+	position: relative;
+	display: block;
+	width: 30px;
+	height: 2px;
+	margin: 4px 4px;
+	border-radius: 2px;
+	top: 0;
+	background-color: var(--foreground);
+}
+.navbar-toggler.custom {
+	height: 30px;
+	z-index: 1000;
+}
+.navbar-toggler .line:nth-child(2) {
+	width: 16px;
+	margin-left: 14px;
+}
+.navbar-toggler-toggle .line:nth-child(1) {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	top: 6px;
+}
+.navbar-toggler-toggle .line:nth-child(2) {
+	opacity: 0;
+}
+.navbar-toggler-toggle .line:nth-child(3) {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	top: -6px;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.10rem var(--foreground);
+}
+
+/****************************
+  	CHANGE DROPDOWN FROM CLICK TO **/
+@media (min-width: 992px) {
+	/** BOOTSTRAP 5 DROPDOWN HOVERABLE (WITHOUT TRANSITION)**/
+	/* .dropdown .dropdown-menu {
+		display: none;
+		margin-top: 0;
+	}
+	.dropdown:hover .dropdown-menu {
+		display: block;
+		right: 0;
+  		left: auto;
+	} */
+
+	/** BOOTSTRAP 5 DROPDOWN HOVERABLE (WITH TRANSITION HACK)**/
+	.dropdown .dropdown-menu {
+		display: block;
+		visibility: hidden;
+		opacity: 0;
+		right: 0;
+  		left: auto;
+		transform: translateY(25px);
+		-webkit-transform: translateY(25px);
+		-moz-transform: translateY(25px);
+		-o-transform: translateY(25px);
+		transition: opacity .35s ease, visibility .35s ease, transform .35s ease-in-out;
+		-webkit-transition: opacity .35s ease, visibility .35s ease, transform .35s ease-in-out;
+		-moz-transition: opacity .35s ease, visibility .35s ease, transform .35s ease-in-out;
+		-o-transition: opacity .35s ease, visibility .35s ease, transform .35s ease-in-out;
+	}
+	.dropdown:hover .dropdown-menu {
+		display: block;
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+/****************************
+  	MEGAMENU **/
+.megamenu.dropdown {
+	position: unset;
+}
+.megamenu.dropdown .dropdown-menu {
+	width: 100%;
+}
+.megamenu.dropdown.nav-item:hover .dropdown-menu {
+	padding: 1rem;
+	right: 0;
+	left: 0;
+	background: var(--background);
+	color: var(--foreground);
+}
+
+/****************************
+  	FOOTER **/
+.site-footer {
+	z-index: 999;
+	top: auto;
+	bottom: 0;
+}
+.footer-socials a,
+.footer-socials i,
+.footer-socials span {
+	border-radius: 2.5px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.footer-socials a {
+	margin-left: 8px;
+	margin-bottom: 8px;
+	text-decoration: none;
+	background-color: #555555;
+	z-index: 1000;
+}
+.footer-socials i,
+.footer-socials .bi {
+	width: 30px;
+	height: 30px;
+	font-size: 16px;
+	padding: 7px;
+	text-align: center;
+	color: #ffffff;
+	z-index: 1001;
+}
+.footer-socials a:hover {
+	background-color: #ffffff;
+}
+.footer-socials i:hover,
+.footer-socials i:focus, 
+.footer-socials .bi:hover,
+.footer-socials .bi:focus {
+	color: #555555;
+}
+/** MEDIUM **/
+@media (min-width: 576px) {
+}
+/** LARGE **/
+@media (min-width: 768px) {
+}
+/** XLARGE **/
+@media (min-width: 992px) {
+}
+/** XXLARGE **/
+@media (min-width: 1200px) {
+}
